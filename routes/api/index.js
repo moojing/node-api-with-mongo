@@ -1,9 +1,12 @@
 var express = require('express')
 var router = express.Router()
-var news = require('./news')
-var navigation = require('./navigation')
+ 
 
-router.use('/news', news);
-router.use('/navigation', navigation);
+router.use('/news', require('./news'));
+router.use('/menu', require('./menu'));
+router.use('/homepageList', require('./front/homepageList'));
 
 module.exports = router;
+
+
+

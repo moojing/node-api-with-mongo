@@ -1,10 +1,11 @@
 var createError = require('http-errors');
 var express = require('express');
+require('dotenv').config()
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-// require('./model/mongo')
+require('./model/mongoConnect')
 const indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var apiRouter = require('./routes/api'); 
