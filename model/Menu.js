@@ -10,15 +10,14 @@ const MenuSchema = new Schema( {
     
 })
 
-
-MenuSchema.static('findByName', function (cb) {
-    return this.findOne({ name: name })
+MenuSchema.static('getSingleton', function (cb) {
+    return this.findOne({})
                .limit(1)
                .exec(function (error, model) {
                     if (error) {
                         cb(error, null);
                     } else if (model == null) {
-                        cb(error, new MenuSchema());
+                        cb(error, new Menu());
                     } else {
                         cb(error, model);
                     }
@@ -26,22 +25,7 @@ MenuSchema.static('findByName', function (cb) {
     });
 
 
-
-MenuSchema.statics = {
-    getSingleton: function (cb) {
-          this.findOne()
-              .limit(1)
-              .exec(function (error, model) {
-                  if (error) {
-                      cb(error, null);
-                  } else if (model == null) {
-                      cb(error, new MenuSchema());
-                  } else {
-                      cb(error, model);
-                  }
-              });
-      },
-   };
-
+ 
 const Menu = mongoose.model('Menu', MenuSchema)
+
 module.exports = Menu
