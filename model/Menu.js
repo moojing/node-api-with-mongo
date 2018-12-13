@@ -3,9 +3,10 @@ const Schema = require('mongoose').Schema
 const ObjectId = mongoose.Schema.Types.ObjectId;
 
 const MenuSchema = new Schema( { 
-    names: {
+    menus: {
         type:Array,
-        default: ['AAAA','VVVV'] 
+        default: [ {name:"Bikes",
+                    link:''}] 
     },
     
 })

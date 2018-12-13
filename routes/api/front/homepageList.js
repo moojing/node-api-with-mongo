@@ -13,7 +13,13 @@ router.get('/', async function(req, res) {
 Menu.getSingleton(async function (err, menuItem) {
   if (err) return handleError(err);
   // saved!
-  menuItem.names=['KKasajlsdfjsdjfssdKKK'];
+  menuItem.menus=[
+            {name:"Bikes",
+             link:''
+            },
+            {name:"Bikes",
+             link:''
+            }];
   menuItem.save()
   let news = await News.find();
   let menu = await Menu.find(); 
