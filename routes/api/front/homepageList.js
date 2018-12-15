@@ -6,7 +6,7 @@ const Menu = models('Menu');
 
 router.get('/', async function(req, res) {
  
-  const lang = req.header('lang'); 
+  const lang = req.header('lang')?req.header('lang'):req.param('lang'); 
 
   console.log('lang=',lang)
 
@@ -17,7 +17,7 @@ router.get('/', async function(req, res) {
               
     // menuItem[0].save()
     
-    console.log(process.env.NODE_ENV)
+    console.log(process.env)
     res.json({res:menuItem})
   },lang);
 
