@@ -45,13 +45,13 @@ const MenuSchema = new Schema( {
 })
 
 MenuSchema.static('getSingleton', function (cb,lang) {
-    return Menu.findOne({},{menus:{$elemMatch:{lang}}})
+    return Menu.find({},{menus:{$elemMatch:{lang}}})
                 .limit(1)
                 .exec(function (error, model) {
                    console.log('model has found:',model)
                     if (error) {
                         cb(error, null);
-                    } else if (!model) {
+                    } else if (!model|| model.length==0) {
                         cb(error, new Menu());
                     } else {
                         cb(error, model);
