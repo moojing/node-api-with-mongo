@@ -6,24 +6,23 @@ const Menu = models('Menu');
 
 router.get('/', async function(req, res) {
  
-const lang = req.header('lang'); 
+  const lang = req.header('lang'); 
 
-console.log('lang=',lang)
+  console.log('lang=',lang)
 
-Menu.getSingleton(async function (err, menuItem) {
-  if (err) return handleError(err);
-  console.log('menuItem',menuItem)
-  // menuItem.menus=[];
-            
-  // menuItem[0].save()
-   
-  res.json({res:menuItem})
-},lang);
-
-// Menu.deleteMany({ }, function (err) {console.log(err);});
-   
+  Menu.getSingleton(async function (err, menuItem) {
+    if (err) return handleError(err);
     
-  })
+    // menuItem.menus=[];
+              
+    // menuItem[0].save()
+    
+    console.log(process.env.NODE_ENV)
+    res.json({res:menuItem})
+  },lang);
+
+
+})
  
 
 
