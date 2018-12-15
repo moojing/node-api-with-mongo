@@ -52,7 +52,9 @@ MenuSchema.static('getSingleton', function (cb,lang) {
                     if (error) {
                         cb(error, null);
                     } else if (!model|| model.length==0) {
-                        cb(error, new Menu());
+                        let genModel = new Menu(); 
+                        genModel.save()
+                        cb(error,genModel);
                     } else {
                         cb(error, model);
                     }

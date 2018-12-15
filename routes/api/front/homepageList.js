@@ -15,7 +15,7 @@ router.get('/', async function(req, res) {
     
     // menuItem.menus=[];
               
-    // menuItem[0].save()
+    // menuItem.save()
     
     
     res.json({res:menuItem})
