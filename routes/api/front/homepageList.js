@@ -17,7 +17,7 @@ router.get('/', async function(req, res) {
               
     // menuItem[0].save()
     
-    console.log(process.env)
+    
     res.json({res:menuItem})
   },lang);
 
