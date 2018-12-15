@@ -3,7 +3,7 @@
 const mongoose = require('mongoose');
  
 //Set up default mongoose connection
-const mongoDB = process.env.DB_HOST_DEV;
+const mongoDB = process.env.DB_HOST_STAGING;
 mongoose.connect(mongoDB, { useNewUrlParser: true ,useCreateIndex:true },function(error) {
     if(error){ console.error(error)}
     console.log('Mongoose Connected')

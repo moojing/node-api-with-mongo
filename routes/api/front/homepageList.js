@@ -5,26 +5,20 @@ const News = models('News');
 const Menu = models('Menu');
 
 router.get('/', async function(req, res) {
-  
-  // Menu.findOne({ id: 0 }, function(err, menuitem) {
-  //   if(menuitem) console.log(menuitem)
-  // });
+ 
+const lang = req.header('lang'); 
+
+console.log('lang=',lang)
 
 Menu.getSingleton(async function (err, menuItem) {
   if (err) return handleError(err);
-  // saved!
-  menuItem.menus=[
-            {name:"Bikes",
-             link:''
-            },
-            {name:"Bikes",
-             link:''
-            }];
-  menuItem.save()
-  let news = await News.find();
-  let menu = await Menu.find(); 
+  console.log('menuItem',menuItem)
+  // menuItem.menus=[];
+            
+  // menuItem[0].save()
+   
   res.json({res:menuItem})
-});
+},lang);
 
 // Menu.deleteMany({ }, function (err) {console.log(err);});
    
