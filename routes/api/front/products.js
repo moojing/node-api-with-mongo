@@ -7,21 +7,35 @@ const ProductCategory = models('ProductCategory');
 
 
     router.get('/', async function(req, res) {
-        Product.remove({},()=>{})
-        Product.find({},function (err, productModel) {
-            if (err){
-                res.err({
-                    status: 'failed',
-                    message: err
-                })
-            } 
+        // ProductDescription.remove({},()=>{})
+        // Product.remove({},()=>{})
+        let productId = req.body.productId
+        
+        try{
+            let productQuery = productId ?{_id:productId} : {}  
+            let product = await Product.find(productQuery) 
             
-            res.json( {
+            let queryProduct = Object.create(product[0])
+            
+            let productDescQuery = productId ?{_id:queryProduct.descriptionId} : {} 
+            let pdesc = await ProductDescription.findOne(productDescQuery) 
+            
+            queryProduct.description = pdesc.description
+            
+            console.log('pdesc',pdesc.description);
+            
+            console.log('queryProduct',queryProduct)
+            res.json({
                 status: 'success',
-                data: productModel
+                data: queryProduct
             })
-            
-        });
+        }catch(err){
+            res.json({
+                status: 'failed',
+                message: err
+            })
+        } 
+       
     })
     
 
@@ -29,8 +43,10 @@ const ProductCategory = models('ProductCategory');
     router.post('/', async function(req, res) {
         let postBody = req.body 
         try{
-            let desc = await ProductDescription.create({content:postBody})
-            postBody.content = desc._id
+            let desc = await ProductDescription.create({description:postBody.description})
+            delete postBody.description
+            postBody.descriptionId = desc._id
+            
             let product = await Product.create(postBody)
             res.json({
                 status: 'success',
@@ -38,7 +54,7 @@ const ProductCategory = models('ProductCategory');
             })
             
         }catch(err){
-            res.err({
+            res.json({
                 status: 'failed',
                 message: err
             })

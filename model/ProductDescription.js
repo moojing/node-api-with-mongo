@@ -6,7 +6,7 @@ autoIncrement.initialize(mongoose.connection);
 
 const DescriptionSchema = new Schema( { 
     productId:Number,
-    content:{
+    description:{
         'zh-cn':{
             tilte: String,
             text:String,
