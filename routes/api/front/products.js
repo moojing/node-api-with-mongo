@@ -9,25 +9,38 @@ const ProductCategory = models('ProductCategory');
     router.get('/', async function(req, res) {
         // ProductDescription.remove({},()=>{})
         // Product.remove({},()=>{})
-        let productId = req.body.productId
-        
+       
+        let page = req.query.page
+        let size = Number(req.query.size)
+         console.log('page',size)
         try{
-            let productQuery = productId ?{_id:productId} : {}  
-            let product = await Product.find(productQuery) 
+            let product = await Product.find({}).skip(size*page).limit(size)
             
-            let queryProduct = Object.create(product[0])
-            
-            let productDescQuery = productId ?{_id:queryProduct.descriptionId} : {} 
-            let pdesc = await ProductDescription.findOne(productDescQuery) 
-            
-            queryProduct.description = pdesc.description
-            
-            console.log('pdesc',pdesc.description);
-            
-            console.log('queryProduct',queryProduct)
             res.json({
                 status: 'success',
-                data: queryProduct
+                data: product
+            })
+        }catch(err){
+            res.json({
+                status: 'failed',
+                message: err
+            })
+        } 
+       
+    })
+
+    router.get('/:id', async function(req, res) {
+        let productId = req.params.id
+        
+        console.log('productId',productId)
+        try{
+            let product = await Product.findOne({_id:productId})
+            let pdesc = await ProductDescription.findOne({_id:product.descriptionId}) 
+            product.description = pdesc.description
+
+            res.json({
+                status: 'success',
+                data: product
             })
         }catch(err){
             res.json({
