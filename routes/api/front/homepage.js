@@ -12,12 +12,7 @@ router.get('/', async function(req, res) {
 
   Menu.getSingleton(async function (err, menuItem) {
     if (err) return handleError(err);
-    
-    // menuItem.menus=[];
               
-    // menuItem.save()
-    
-    
     res.json({res:menuItem})
   },lang);
 
