@@ -1,7 +1,11 @@
 
 //Import the mongoose module
 const mongoose = require('mongoose');
- 
+const autoIncrement = require('mongoose-auto-increment');
+autoIncrement.initialize(mongoose.connection);
+
+exports.autoIncrement = autoIncrement
+
 //Set up default mongoose connection
 const mongoDB = process.env.NODE_ENV==='staging'? process.env.DB_HOST_STAGING : process.env.DB_HOST_DEV;
 mongoose.connect(mongoDB, { useNewUrlParser: true ,useCreateIndex:true },function(error) {

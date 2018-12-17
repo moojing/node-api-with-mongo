@@ -1,41 +1,115 @@
 const mongoose = require('mongoose')
 const Schema = require('mongoose').Schema
-const autoIncrement = require('mongoose-auto-increment');
-autoIncrement.initialize(mongoose.connection);
+const autoIncrement = require('./mongoConnect').autoIncrement
 
 
 const DescriptionSchema = new Schema( { 
-    productId:Number,
-    description:{
+   
+    
         'zh-cn':{
-            tilte: String,
-            text:String,
-            imageUrl: String
+            description:{
+                tilte: String,
+                text:String,
+            },
+            spec:{
+                weight: String,
+                gear: String,
+                frame: String,
+                fork: String,
+                derailleur: String,
+                brakes: String,
+                wheelset: String,
+                saddle: String,
+                size: String,
+                color: String,
+            },
+            
         },
         'en-us':{
-            tilte: String,
-            text:String,
-            imageUrl: String
+            description:{
+                tilte: String,
+                text:String,  
+            },
+            spec:{
+                weight: String,
+                gear: String,
+                frame: String,
+                fork: String,
+                derailleur: String,
+                brakes: String,
+                wheelset: String,
+                saddle: String,
+                size: String,
+                color: String,
+            },
+            
         },
         'ja-jp':{
-            tilte: String,
-            text:String,
-            imageUrl: String
+            description:{
+                tilte: String,
+                text:String,
+            },
+            spec:{
+                weight: String,
+                gear: String,
+                frame: String,
+                fork: String,
+                derailleur: String,
+                brakes: String,
+                wheelset: String,
+                saddle: String,
+                size: String,
+                color: String,
+            },
+            
         },
         'it-ch':{
-            tilte: String,
-            text:String,
-            imageUrl: String
+            description:{
+                tilte: String,
+                text:String,
+            },
+            spec:{
+                weight: String,
+                gear: String,
+                frame: String,
+                fork: String,
+                derailleur: String,
+                brakes: String,
+                wheelset: String,
+                saddle: String,
+                size: String,
+                color: String,
+            },
+            
         },
         'es-es':{
-            tilte: String,
-            text:String,
-            imageUrl: String
-        }
-    }, 
+            description:{
+                tilte: String,
+                text:String,
+            },
+            spec:{
+                weight: String,
+                gear: String,
+                frame: String,
+                fork: String,
+                derailleur: String,
+                brakes: String,
+                wheelset: String,
+                saddle: String,
+                size: String,
+                color: String,
+            },
+            
+        },
+
+
+
+   
+    
+    
 })
 
 DescriptionSchema.plugin(autoIncrement.plugin, 'Description');
-const Description = mongoose.model('Description', DescriptionSchema)
+const Description = mongoose.model('ProductDescription', DescriptionSchema)
 
 module.exports = Description

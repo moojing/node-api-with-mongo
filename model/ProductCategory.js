@@ -1,7 +1,6 @@
 const mongoose = require('mongoose')
 const Schema = require('mongoose').Schema
-const autoIncrement = require('mongoose-auto-increment');
-autoIncrement.initialize(mongoose.connection);
+const autoIncrement = require('./mongoConnect').autoIncrement
 
 const ObjectId = mongoose.Schema.Types.ObjectId;
 

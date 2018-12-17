@@ -1,24 +1,26 @@
 const mongoose = require('mongoose')
 const Schema = require('mongoose').Schema
-const autoIncrement = require('mongoose-auto-increment');
-autoIncrement.initialize(mongoose.connection);
+const autoIncrement = require('./mongoConnect').autoIncrement
 
 
-const ProductSchema = new Schema( { 
+const ProductSchema = new Schema({ 
     
         title: String,
         sku:String,
-        "description":{}, 
-        "descriptionId":Number, 
+        "i18n":{
+          type:Number, 
+          ref:"ProductDescription"
+        }, 
         "price": Number,
         "productImageUrl": String,
-        "detailImageUrl": String,
+        "descriptionImageUrl": String,
+        "specImageUrl": String,
         "sizeImageUrl": String,
-        "category": Number,
-        "spec": {
-          "weight": String,
+        "category": {
+          type:Number, 
+          ref:"ProductCategory"
         },
-        "size": [
+        "size":[
           {
             name:String ,
             "44": Number,
@@ -28,8 +30,7 @@ const ProductSchema = new Schema( {
             "52": Number,
             "54": Number,
             _id : false
-          }
-        ],
+          }],
         'star': {
             type:Number, 
             default:4
