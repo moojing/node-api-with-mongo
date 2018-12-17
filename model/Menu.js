@@ -2,57 +2,46 @@ const mongoose = require('mongoose')
 const Schema = require('mongoose').Schema
 const ObjectId = mongoose.Schema.Types.ObjectId;
 
-const MenuSchema = new Schema( { 
-    menus: {
-        type:Array,
-        default: [  {
-            lang:'zh-cn',
-            bike: ['road', 'mtb'],
-            team: '',
-            news: '',
-            about: ''
-          },
-          {
-            lang:'en-us',
-            bike: ['road', 'mtb'],
-            team: '',
-            news: '',
-            about: ''
-          },
-          {
-            lang:'ja-jp',
-            bike: ['road', 'mtb'],
-            team: '',
-            news: '',
-            about: ''
-          },
-          {
-            lang:'es-es',
-            bike: ['road', 'mtb'],
-            team: '',
-            news: '',
-            about: ''
-          },
-          {
-            lang:'it-ch',
-            bike: ['road', 'mtb'],
-            team: '',
-            news: '',
-            about: ''
-          }
-    ] },
-    
+const BannerSchema = new Schema( { 
+    banners:{
+        top:{
+            backgroundImg:String,  
+            i18n:{
+                "zh-cn":{
+                    title:String,
+                    btnText:String
+                },
+                "en-us":{
+                    title:String,
+                    btnText:String
+                },
+                "it-ch":{
+                    title:String,
+                    btnText:String
+                },
+                "ja-jp":{
+                    title:String,
+                    btnText:String
+                },
+                "es-es":{
+                    title:String,
+                    btnText:String
+                },
+            },
+        },
+
+    }
 })
 
-MenuSchema.static('getSingleton', function (cb,lang) {
-    return Menu.find({},{menus:{$elemMatch:{lang}}})
+BannerSchema.static('getSingleton', function (cb,lang) {
+    return BannerSchema.find({},{menus:{$elemMatch:{lang}}})
                 .limit(1)
                 .exec(function (error, model) {
                    console.log('model has found:',model)
                     if (error) {
                         cb(error, null);
                     } else if (!model|| model.length==0) {
-                        let genModel = new Menu(); 
+                        let genModel = new BannerSchema(); 
                         genModel.save()
                         cb(error,genModel);
                     } else {
@@ -63,6 +52,6 @@ MenuSchema.static('getSingleton', function (cb,lang) {
 
 
  
-const Menu = mongoose.model('Menu', MenuSchema)
+const Banner = mongoose.model('Banner', BannerSchema)
 
-module.exports = Menu
+module.exports = Banner
