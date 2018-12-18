@@ -41,7 +41,7 @@ const ProductCategory = models('ProductCategory');
                 
             res.json({
                 status: 'success',
-                data: product
+                data: product 
             })
         }catch(err){
             console.log(err)
@@ -62,7 +62,7 @@ const ProductCategory = models('ProductCategory');
             let desc = await ProductDescription.create(postBody.i18n)
             
             postBody.i18n = desc._id
-            
+            postBody.created_at = Date.now()
             let product = await Product.create(postBody)
             res.json({
                 status: 'success',

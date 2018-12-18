@@ -1,10 +1,10 @@
 const mongoose = require('mongoose')
 const Schema = require('mongoose').Schema
 const autoIncrement = require('./mongoConnect').autoIncrement
-
+const ObjectID =  require('mongodb').ObjectID
 
 const ProductSchema = new Schema({ 
-    
+        created_at: Date,
         title: String,
         sku:String,
         "i18n":{
