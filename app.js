@@ -7,13 +7,13 @@ var bodyParser = require('body-parser');
 var logger = require('morgan');
 
 var cors = require('cors')
-app.use(cors())
+
 require('./model/mongoConnect')
 
 var apiRouter = require('./routes/api'); 
 
 var app = express();
-
+app.use(cors())
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
