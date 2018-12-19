@@ -2,12 +2,17 @@ var express = require('express')
 var router = express.Router()
  
 
-router.use('/news', require('./news'));
-router.use('/menu', require('./menu'));
-router.use('/category', require('./front/categories'));
-router.use('/homepage', require('./front/homepage'));
-router.use('/products', require('./front/products'));
-router.use('/imageUpload', require('./front/imageUpload'));
+
+const fs = require('fs');
+
+fs.readdir(__dirname+'/front', (err, files) => {
+  if(err) throw err
+  files.forEach(file => {
+    let routerName = file.split('.')[0]
+    router.use(`/${routerName}`, require(`./front/${routerName}`));    
+  });
+})
+ 
 
 module.exports = router;
 

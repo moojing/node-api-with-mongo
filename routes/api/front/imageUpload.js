@@ -16,13 +16,7 @@ cloudinary.v2.uploader.upload(req.files.imageData.path, function(error, result) 
         data : {imageUrl:result.url}
     })
      
-});
-    
- 
-
-    
- 
-
+    });
 })
  
 
