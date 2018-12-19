@@ -19,12 +19,12 @@ const ProductCategory = models('ProductCategory');
                 .limit(size)
             
             res.json({
-                status: 'success',
+                success: true,
                 data: product
             })
         }catch(err){
             res.json({
-                status: 'failed',
+                success: false,
                 message: err
             })
         } 
@@ -40,13 +40,13 @@ const ProductCategory = models('ProductCategory');
                 .populate('i18n',lang)
                 
             res.json({
-                status: 'success',
+                success: true,
                 data: product 
             })
         }catch(err){
             console.log(err)
             res.json({
-                status: 'failed',
+                success: false,
                 message: err
             })
         } 
@@ -65,13 +65,13 @@ const ProductCategory = models('ProductCategory');
             postBody.created_at = Date.now()
             let product = await Product.create(postBody)
             res.json({
-                status: 'success',
+                success: true,
                 data: product
             })
             
         }catch(err){
             res.json({
-                status: 'failed',
+                success: false,
                 message: err
             })
         } 
@@ -88,13 +88,13 @@ const ProductCategory = models('ProductCategory');
             let desc = await ProductDescription.findOneAndRemove({_id:deleteI18n})
             
             res.json({
-                status: 'success',
+                success: true,
                 data: product
             })
             
         }catch(err){
             res.json({
-                status: 'failed',
+                success: false,
                 message: err
             })
         } 

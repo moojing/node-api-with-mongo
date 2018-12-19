@@ -9,13 +9,13 @@ const Category = models('ProductCategory');
     Category.find({},function (err, categoryModel) {
         if (err){
             res.err({
-                status: 'failed',
+                success: false,
                 message: err
             })
         }
         
         res.json( {
-            status: 'success',
+            success: true,
             data: categoryModel
         })
           
@@ -33,12 +33,12 @@ const Category = models('ProductCategory');
         Category.create({name:categoryName},function(err,category){
             if (err){
                 res.err({
-                    status: 'failed',
+                    success: false,
                     message: err
                 })
             }
             res.json({
-                status: 'success',
+                success: true,
                 data: category
             })
             

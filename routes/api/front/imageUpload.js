@@ -12,7 +12,7 @@ router.post('/',multipartMiddleware,async function(req, res) {
 cloudinary.v2.uploader.upload(req.files.imageData.path, function(error, result) {
     if(error) console.log('error',error) 
     res.json({
-        status : "success",
+        success: true,
         data : {imageUrl:result.url}
     })
      
