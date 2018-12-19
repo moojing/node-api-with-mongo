@@ -5,21 +5,16 @@ const jwt = require('jsonwebtoken')
 const config = require('../../config')
 const whiteList = require('../../config/routerWhitelist')
 
-console.log('whiteList',whiteList)
-
 const fs = require('fs');
 
 router.use(function (req, res, next) {
 
     let method = req.method.toLowerCase()
     let path = req.path
-    console.log('path',path);
-    console.log('method',method);
     
     let token = req.body.token || req.query.token || req.headers['x-access-token']
     //Bypass
     if(whiteList[method] && whiteList[method].indexOf(path) !== -1){
-      console.log('不用驗證')
       return  next()
     }
     // require token-checking 
@@ -28,7 +23,6 @@ router.use(function (req, res, next) {
         if (err) {
           return res.json({success: false, message: 'Failed to authenticate token.'})
         } else {
-            console.log('decoded',decoded) 
           req.decoded = decoded
           next()
         }
