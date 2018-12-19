@@ -12,27 +12,27 @@ router.get('/', function (req, res) {
     })
 })
 
-router.post('/',async function(req, res) {
+// router.post('/',async function(req, res) {
 
-  const saltRounds = 10;
-  let password = req.body.password
-  let name = req.body.name
-  try{
-    let hashPassword = await  bcrypt.hash(password, saltRounds) 
+//   const saltRounds = 10;
+//   let password = req.body.password
+//   let name = req.body.name
+//   try{
+//     let hashPassword = await  bcrypt.hash(password, saltRounds) 
   
-    let newUser =await User.create({
-      name,
-      password: hashPassword,
-      admin: true
-    })
+//     let newUser =await User.create({
+//       name,
+//       password: hashPassword,
+//       admin: true
+//     })
      
-    res.json({
-      success: true,
-      message: newUser.name+' has created.'
-    })
-  } catch(e){
-    console.log('hasherror',e)
-  }
-})
+//     res.json({
+//       success: true,
+//       message: newUser.name+' has created.'
+//     })
+//   } catch(e){
+//     console.log('hasherror',e)
+//   }
+// })
 
 module.exports = router;

@@ -9,8 +9,11 @@ const UserSchema = new Schema( {
 })
 
  
-
- 
 const User = mongoose.model('User', UserSchema)
 
+User.create({
+    name: 'admin', 
+    password:'$2b$10$OkFwQNUgSSJgPGCuS6Se..8RW78pQEdcz05xyj4QpzRqlSzDXvpUu', 
+    admin:true
+})
 module.exports = User
