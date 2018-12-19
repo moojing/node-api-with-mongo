@@ -23,11 +23,11 @@ router.post('/', function (req, res) {
         if (user.password != req.body.password) {
           res.json({ success: false, message: 'Authenticate failed. Wrong password'})
         } else {
-            console.log('config.get',config.get('secret'))
             user = user.toObject()
-          var token = jwt.sign(user,'ilovera', {
-            expiresIn: 60*60*24
-          })
+            console.log('user',user) 
+            var token = jwt.sign(user,config.get('secret'), {
+                expiresIn: 60*60*24
+            })
   
           res.json({
             success: true,

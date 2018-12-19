@@ -48,4 +48,5 @@ const Category = models('ProductCategory');
     })
 
 
-module.exports = router;
+
+    module.exports = router;
