@@ -20,17 +20,162 @@ const ProductSchema = new Schema({
           type:Number, 
           ref:"ProductCategory"
         },
-        "size":[
-          {
-            name:String ,
+        "size":{
+          CRANK_LENGTH:{
             "44": Number,
             "46": Number,
             "48": Number,
             "50": Number,
             "52": Number,
-            "54": Number,
-            _id : false
-          }],
+            "54": Number
+          },
+          STEM_LENGTH:{
+            "44": Number,
+            "46": Number,
+            "48": Number,
+            "50": Number,
+            "52": Number,
+            "54": Number
+          },
+          SEATPOST_LENGTH:{
+            "44": Number,
+            "46": Number,
+            "48": Number,
+            "50": Number,
+            "52": Number,
+            "54": Number
+          },
+          SADDLE_WIDTH:{
+            "44": Number,
+            "46": Number,
+            "48": Number,
+            "50": Number,
+            "52": Number,
+            "54": Number
+          },
+          HANDLEBAR_WIDTH:{
+            "44": Number,
+            "46": Number,
+            "48": Number,
+            "50": Number,
+            "52": Number,
+            "54": Number
+          },
+          TOP_TUBE_LENGTH:{
+            "44": Number,
+            "46": Number,
+            "48": Number,
+            "50": Number,
+            "52": Number,
+            "54": Number
+          },
+          STEM_LENGTH:{
+            "44": Number,
+            "46": Number,
+            "48": Number,
+            "50": Number,
+            "52": Number,
+            "54": Number
+          },
+          STACK:{
+            "44": Number,
+            "46": Number,
+            "48": Number,
+            "50": Number,
+            "52": Number,
+            "54": Number
+          },
+
+          WHEELBASE:{
+            "44": Number,
+            "46": Number,
+            "48": Number,
+            "50": Number,
+            "52": Number,
+            "54": Number
+          },
+          CHAINSTAY_LENGTH:{
+            "44": Number,
+            "46": Number,
+            "48": Number,
+            "50": Number,
+            "52": Number,
+            "54": Number
+          },
+          FRONT_CENTER:{
+            "44": Number,
+            "46": Number,
+            "48": Number,
+            "50": Number,
+            "52": Number,
+            "54": Number
+          },
+          BB_DROP:{
+            "44": Number,
+            "46": Number,
+            "48": Number,
+            "50": Number,
+            "52": Number,
+            "54": Number
+          },
+          BB_HEIGHT:{
+            "44": Number,
+            "46": Number,
+            "48": Number,
+            "50": Number,
+            "52": Number,
+            "54": Number
+          },
+          SEAT_TUBE_ANGLE:{
+            "44": Number,
+            "46": Number,
+            "48": Number,
+            "50": Number,
+            "52": Number,
+            "54": Number
+          },
+          HEAD_TUBE_ANGLE:{
+            "44": Number,
+            "46": Number,
+            "48": Number,
+            "50": Number,
+            "52": Number,
+            "54": Number
+          },
+          SEAT_TUBE_LENGTH:{
+            "44": Number,
+            "46": Number,
+            "48": Number,
+            "50": Number,
+            "52": Number,
+            "54": Number
+          },
+          HEAD_TUBE_LENGTH:{
+            "44": Number,
+            "46": Number,
+            "48": Number,
+            "50": Number,
+            "52": Number,
+            "54": Number
+          },
+          FORK_LENGTH:{
+            "44": Number,
+            "46": Number,
+            "48": Number,
+            "50": Number,
+            "52": Number,
+            "54": Number
+          },
+          TRAIL:{
+            "44": Number,
+            "46": Number,
+            "48": Number,
+            "50": Number,
+            "52": Number,
+            "54": Number
+          },
+
+        },
         'star': {
             type:Number, 
             default:4

@@ -7,9 +7,6 @@ const models = require('../../../model');
 const cloudinary = require('../../../utils/cloudinary')
 
 
- 
- 
-
 router.post('/',multipartMiddleware,async function(req, res) {
     
 cloudinary.v2.uploader.upload(req.files.imageData.path, function(error, result) {
