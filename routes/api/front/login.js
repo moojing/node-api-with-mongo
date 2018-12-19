@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken')
+const bcrypt = require('bcrypt')
 const express = require('express')
 const router = express.Router()
 const path = require('path')
@@ -6,34 +7,46 @@ const path = require('path')
 const config = require('../../../config')
 const models = require('../../../model')
 const User = models('User')
-
-
+const myPassword = "$2b$10$3n0y3RDkHoaeSkJMSiLe3OGUtDUq4hxmAefBkpzs6k5.1KfezC4Se"
+ 
 
 router.post('/', function (req, res) {
     console.log(req.body.name);
     
     User.findOne({
       name: req.body.name
-    }, function (err, user) {
+    }, async function (err, user) {
       if (err) throw err
-  
+      
       if (!user) {
         res.json({ success: false, message: 'Authenticate failed. User not found'})
       } else if (user) {
-        if (user.password != req.body.password) {
-          res.json({ success: false, message: 'Authenticate failed. Wrong password'})
-        } else {
-            user = user.toObject()
-            console.log('user',user) 
-            var token = jwt.sign(user,config.get('secret'), {
-                expiresIn: 60*60*24
-            })
-  
+        let loginPassword = req.body.password 
+        let userPassword = user.password 
+        let loginResult = await bcrypt.compare(loginPassword, userPassword)
+
+        if (loginResult){
+
+          user = user.toObject()
+          console.log('user',user) 
+          var token = jwt.sign(user,config.get('secret'), {
+              expiresIn: 60*60*24
+          })
+
           res.json({
             success: true,
             token: token
           })
-        }
+        }else{
+          res.json({ success: false, message: 'Authenticate failed. Wrong password'})  
+        } 
+        
+        
+   
+
+
+        
+        
       }
     })
   })

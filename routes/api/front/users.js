@@ -1,19 +1,16 @@
-const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
 const express = require('express')
 const router = express.Router()
-const path = require('path')
 
-const config = require('../../../config')
 const models = require('../../../model')
 const User = models('User') 
 
 
-// router.get('/', function (req, res) {
-//     User.find({}, function (err, users) {
-//       res.json(users)
-//     })
-// })
+router.get('/', function (req, res) {
+    User.find({}, function (err, users) {
+      res.json(users)
+    })
+})
 
 router.post('/',async function(req, res) {
 
@@ -31,7 +28,7 @@ router.post('/',async function(req, res) {
      
     res.json({
       success: true,
-      message: newUser.name+' has created'
+      message: newUser.name+' has created.'
     })
   } catch(e){
     console.log('hasherror',e)
