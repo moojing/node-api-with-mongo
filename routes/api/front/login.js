@@ -35,7 +35,7 @@ router.post('/', function (req, res) {
             success: true,
             token: token, 
             name:user.name,
-            role:['admin'],
+            roles:user.roles,
             introduction:'超級管理員'
           })
         }else{

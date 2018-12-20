@@ -8,7 +8,7 @@ const whiteList = require('../../config/routerWhitelist')
 const fs = require('fs');
 
 router.use(function (req, res, next) {
-
+   
     let method = req.method.toLowerCase()
     let path = req.path
     console.log('path',path)
