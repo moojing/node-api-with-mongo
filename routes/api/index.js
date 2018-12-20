@@ -11,12 +11,16 @@ router.use(function (req, res, next) {
 
     let method = req.method.toLowerCase()
     let path = req.path
-    
+    console.log('path',path)
     let token = req.body.token || req.query.token || req.headers['x-access-token']
     //Bypass
-    if(whiteList[method] && whiteList[method].indexOf(path) !== -1){
-      return  next()
+    if(whiteList[method]){
+      let whiteResult = whiteList[method].some(m=>{
+        return path.indexOf(m) !== -1
+      }) 
+      if (whiteResult) return next()
     }
+    
     // require token-checking 
     if (token) {
       jwt.verify(token, config.get('secret'), function (err, decoded) {

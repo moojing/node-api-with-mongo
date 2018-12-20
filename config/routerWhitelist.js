@@ -2,6 +2,8 @@ module.exports =  {
     get: [
       '/homepage',
       '/products',
+      '/categories', 
+      '/users'
     ],
     post: [
       '/login'
@@ -9,5 +11,3 @@ module.exports =  {
     put: [],
     delete: [],
   }
-
-

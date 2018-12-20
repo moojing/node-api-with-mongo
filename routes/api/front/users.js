@@ -6,11 +6,11 @@ const models = require('../../../model')
 const User = models('User') 
 
 
-// router.get('/', function (req, res) {
-    // User.find({}, function (err, users) {
-    //   res.json(users)
-    // })
-// })
+router.get('/', function (req, res) {
+    User.find({}, function (err, users) {
+      res.json(users)
+    })
+})
 
 // router.post('/',async function(req, res) {
 

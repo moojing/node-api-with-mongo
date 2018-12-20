@@ -34,8 +34,9 @@ router.post('/', function (req, res) {
           res.json({
             success: true,
             token: token, 
-            username:user.name,
-            admin:user.admin
+            name:user.name,
+            role:['admin'],
+            introduction:'超級管理員'
           })
         }else{
           res.json({ success: false, message: 'Authenticate failed. Wrong password Or token Expired'})  
