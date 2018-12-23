@@ -16,7 +16,7 @@ const CategorySchema = new Schema( {
     }, 
 })
 
-CategorySchema.plugin(autoIncrement.plugin, 'Category');
-const Category = mongoose.model('Category', CategorySchema)
+CategorySchema.plugin(autoIncrement.plugin, 'ProductCategory');
+const Category = mongoose.model('ProductCategory', CategorySchema)
 
 module.exports = Category

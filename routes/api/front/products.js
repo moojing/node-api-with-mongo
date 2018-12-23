@@ -10,17 +10,35 @@ const ProductCategory = models('ProductCategory');
         // ProductDescription.remove({},()=>{})
         // Product.remove({},()=>{})
        
-        let page = req.query.page
-        let size = Number(req.query.size)
-         console.log('page',size)
+        const page = Number(req.query.page) ||  Number(req.body.page)  
+        const size =  Number(req.query.size) ||  Number(req.body.size) 
+        let category = req.query.category || req.body.category
+        if (!category) category = {$exists: true}
+        
+        console.log('body',req.query)
         try{
-            let product = await Product.find({})
-                .skip(size*page)
-                .limit(size)
+            let total = await Product.countDocuments({category })
+            let allProducts = await Product.find({category}).populate('category') 
+            
+            if (!(page&&size))   { 
+                return res.json({
+                    success: true,
+                    total,
+                    products:allProducts
+                })
+            }
+            let products = await Product.find({category})
+                    .populate('category')
+                    .skip((page-1)*size)
+                    .limit(size)
+                
             
             res.json({
                 success: true,
-                data: product
+                total,
+                page,
+                size,
+                products
             })
         }catch(err){
             res.json({
@@ -56,14 +74,38 @@ const ProductCategory = models('ProductCategory');
 
 
     router.post('/', async function(req, res) {
-        let postBody = req.body.data
+        let postBody = req.body
+        // console.log('postBody',postBody.i18n)
         try{
             
             let desc = await ProductDescription.create(postBody.i18n)
-            
+            console.log('desc',desc)
             postBody.i18n = desc._id
             postBody.created_at = Date.now()
             let product = await Product.create(postBody)
+            res.json({
+                success: true,
+                 product
+            })
+            
+        }catch(err){
+            console.log('err',err)
+            res.json({
+                success: false,
+                message: err
+            })
+        } 
+    
+    })
+
+
+    router.post('/:id', async function(req, res) {
+        let updateId = req.params.id
+        let data = req.body.data
+        try{
+            let product = await Product.findOneAndUpdate({_id:updateId},data,{new: true})
+            if(!product) throw "product is not exist!!"
+            
             res.json({
                 success: true,
                 data: product
@@ -77,7 +119,6 @@ const ProductCategory = models('ProductCategory');
         } 
     
     })
-
 
     router.delete('/:id', async function(req, res) {
         let deleteId = req.params.id

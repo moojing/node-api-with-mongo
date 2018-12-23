@@ -61,7 +61,7 @@ const ProductSchema = new Schema({
             "52": Number,
             "54": Number
           },
-          TOP_TUBE_LENGTH:{
+          REACH:{
             "44": Number,
             "46": Number,
             "48": Number,
@@ -69,7 +69,7 @@ const ProductSchema = new Schema({
             "52": Number,
             "54": Number
           },
-          STEM_LENGTH:{
+          TOP_TUBE_LENGTH:{
             "44": Number,
             "46": Number,
             "48": Number,
@@ -174,7 +174,6 @@ const ProductSchema = new Schema({
             "52": Number,
             "54": Number
           },
-
         },
         'star': {
             type:Number, 
@@ -184,6 +183,7 @@ const ProductSchema = new Schema({
 })
 
 ProductSchema.plugin(autoIncrement.plugin, 'Product');
+
 const Product = mongoose.model('Product', ProductSchema)
 
 module.exports = Product
