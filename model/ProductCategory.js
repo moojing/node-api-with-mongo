@@ -19,4 +19,8 @@ const CategorySchema = new Schema( {
 CategorySchema.plugin(autoIncrement.plugin, 'ProductCategory');
 const Category = mongoose.model('ProductCategory', CategorySchema)
 
+Category.create({
+   
+})
+
 module.exports = Category
