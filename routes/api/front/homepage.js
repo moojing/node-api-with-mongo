@@ -6,15 +6,25 @@ const Banner = models('Banner');
 
 router.get('/', async function(req, res) {
  
-  const lang = req.header('lang')?req.header('lang'):req.param('lang'); 
-
-  console.log('lang=',lang)
-
+  const lang = req.header('lang')?req.header('lang'):req.params.lang; 
+  // Banner.remove({},()=>{})
   Banner.getSingleton(async function (err, bannerItem) {
     if (err) return handleError(err);
-              
-    res.json({res:bannerItem})
-  },lang);
+    bannerItem  = bannerItem.toObject()  
+    if (!lang) return res.json({...bannerItem})
+
+    //loop through all blocks
+    let bannerArr = ['top','lefttop','leftbottom','right']
+    bannerArr.forEach(banner=>{
+      if(!bannerItem[banner])return 
+      bannerItem[banner].i18n = {[lang]:bannerItem[banner].i18n[lang] }
+    })  
+    // loop through products
+    bannerItem.products.forEach(product => {
+      product.i18n = {[lang]:product.i18n[lang]}
+    }); 
+    res.json({...bannerItem})
+  });
 
 
 })

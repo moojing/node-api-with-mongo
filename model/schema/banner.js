@@ -1,8 +1,8 @@
 let bannerArr = ['top','lefttop','leftbottom','right']
-let bannerDefault = {} 
 
+let defaultSchema = {} 
 
- let defaultSchema = {
+let defaultBannerSchema = {
         backgroundImg:String,  
         i18n:{
             "zh-cn":{
@@ -28,9 +28,35 @@ let bannerDefault = {}
         }
 } 
 
-
+let defaultProductSchema = {
+    backgroundImg:String, 
+    i18n:{
+        "zh-cn":{
+            title:String,
+            description:String
+        },
+        "en-us":{
+            title:String,
+            description:String
+        },
+        "it-ch":{
+            title:String,
+            description:String
+        },
+        "ja-jp":{
+            title:String,
+            description:String
+        },
+        "es-es":{
+            title:String,
+            description:String
+        },
+        _id:false
+    }
+} 
+defaultSchema.products = [{...defaultProductSchema}] 
 bannerArr.forEach(banner=>{
-    bannerDefault[banner] = {...defaultSchema} 
+    defaultSchema[banner] = {...defaultBannerSchema} 
 })
 
-module.exports = bannerDefault
+module.exports = defaultSchema
