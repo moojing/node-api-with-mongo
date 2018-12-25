@@ -8,19 +8,31 @@ const ObjectId = mongoose.Schema.Types.ObjectId;
 
 const CategorySchema = new Schema( { 
     name:{
-        'zh-cn':String, 
-        'en-us':String, 
-        'ja-jp':String, 
-        'it-ch':String, 
-        'es-es':String, 
+        'zh-cn':{
+            type:String,
+            required:true
+        },
+        'en-us':{
+            type:String,
+            required:true
+        }, 
+        'ja-jp':{
+            type:String,
+            required:true
+        }, 
+        'it-ch':{
+            type:String,
+            required:true
+        }, 
+        'es-es':{
+            type:String,
+            required:true
+        }, 
     }, 
 })
 
 CategorySchema.plugin(autoIncrement.plugin, 'ProductCategory');
 const Category = mongoose.model('ProductCategory', CategorySchema)
 
-Category.create({
-   
-})
 
 module.exports = Category

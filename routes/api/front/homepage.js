@@ -32,7 +32,7 @@ router.get('/', async function(req, res) {
 
 router.post('/', async function(req, res) {
   const data = req.body  
-
+  console.log('data',data)
   Banner.findOneAndUpdate({},data,async function (err, bannerItem) {
     if (err){
        handleError(err);

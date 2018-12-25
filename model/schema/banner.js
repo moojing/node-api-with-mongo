@@ -54,7 +54,11 @@ let defaultProductSchema = {
         _id:false
     }
 } 
-defaultSchema.products = [{...defaultProductSchema}] 
+defaultSchema.products = {}
+for(let i=0 ; i < 6; i++){    
+    defaultSchema.products[i] = {type:Object}
+} 
+
 bannerArr.forEach(banner=>{
     defaultSchema[banner] = {...defaultBannerSchema} 
 })

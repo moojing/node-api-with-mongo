@@ -50,11 +50,14 @@ let defaultProduct = {
         "es-es":{
             title:"",
             description:""
-        },
-        _id:false
+        }
     }
 } 
-defaultValue.products = [{...defaultProduct}] 
+defaultValue.products = {} 
+for(let i=0 ; i < 6; i++){
+    defaultValue.products[i] = {...defaultProduct}
+} 
+
 bannerArr.forEach(banner=>{
     defaultValue[banner] = {...defaultBanner} 
 })
