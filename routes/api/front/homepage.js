@@ -20,9 +20,14 @@ router.get('/', async function(req, res) {
       bannerItem[banner].i18n = {[lang]:bannerItem[banner].i18n[lang] }
     })  
     // loop through products
-    bannerItem.products.forEach(product => {
+    
+    if(!bannerItem.products)return
+
+    for (let i=0; i<bannerItem.products.length;i++){
+      let product = bannerItem.products[i] 
       product.i18n = {[lang]:product.i18n[lang]}
-    }); 
+    }
+     
     res.json({...bannerItem})
   });
 
@@ -32,7 +37,7 @@ router.get('/', async function(req, res) {
 
 router.post('/', async function(req, res) {
   const data = req.body  
-  console.log('data',data)
+  
   Banner.findOneAndUpdate({},data,async function (err, bannerItem) {
     if (err){
        handleError(err);

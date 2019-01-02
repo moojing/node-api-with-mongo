@@ -4,6 +4,7 @@ let defaultSchema = {}
 
 let defaultBannerSchema = {
         backgroundImg:String,  
+        link:String,
         i18n:{
             "zh-cn":{
                 title:String,
@@ -30,6 +31,7 @@ let defaultBannerSchema = {
 
 let defaultProductSchema = {
     backgroundImg:String, 
+    link:String,
     i18n:{
         "zh-cn":{
             title:String,

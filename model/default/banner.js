@@ -4,10 +4,12 @@ let defaultValue = {}
 
 let defaultBanner = {
         backgroundImg:"",  
+        link:"",
         i18n:{
             "zh-cn":{
                 title:"",
-                btnText:""
+                btnText:"",
+                
             },
             "en-us":{
                 title:"",
@@ -30,6 +32,7 @@ let defaultBanner = {
 
 let defaultProduct = {
     backgroundImg:"", 
+    link:"",
     i18n:{
         "zh-cn":{
             title:"",

@@ -14,8 +14,7 @@ const ProductCategory = models('ProductCategory');
         const size =  Number(req.query.size) ||  Number(req.body.size) 
         let category = req.query.category || req.body.category
         if (!category) category = {$exists: true}
-        
-        console.log('body',req.query)
+    
         try{
             let total = await Product.countDocuments({category })
             let allProducts = await Product.find({category}).populate('category') 
