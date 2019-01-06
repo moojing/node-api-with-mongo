@@ -2,7 +2,8 @@ module.exports =  {
     get: [
       '/homepage',
       '/products',
-      '/categories'
+      '/categories',
+      '/news'
     ],
     post: [
       '/login'

@@ -8,29 +8,28 @@ const NewsSchema =  new Schema({
     img2:String,
     i18n:{
         "zh-cn":{
-            title:"",
-            description:"",
-            
+            title:String,
+            description:String,  
         },
         "en-us":{
-            title:"",
-            description:""
+            title:String,
+            description:String
         },
         "it-ch":{
-            title:"",
-            description:""
+            title:String,
+            description:String
         },
         "ja-jp":{
-            title:"",
-            description:""
+            title:String,
+            description:String
         },
         "es-es":{
-            title:"",
-            description:""
+            title:String,
+            description:String
         }
-    } 
+    }
 })
-NewsSchema.plugin(autoIncrement.plugin, 'News');
-const News = mongoose.model('News', new Schema(NewsSchema))
+NewsSchema.plugin(autoIncrement.plugin, 'News' );
+const News = mongoose.model('News', NewsSchema)
 
 module.exports = News
