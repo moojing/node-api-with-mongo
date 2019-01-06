@@ -4,6 +4,7 @@ const autoIncrement = require('./mongoConnect').autoIncrement
 
 
 const NewsSchema =  new Schema({ 
+    created_at: Date,
     img1:String,
     img2:String,
     i18n:{

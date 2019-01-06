@@ -6,28 +6,50 @@ const News = models('News');
 
     router.get('/', async function(req, res) {
         // News.remove({},()=>{})
-        News.find({},function (err, news) {
-            if (err){
-                res.err({
-                    success: false,
-                    message: err
+        const page = Number(req.query.page) ||  Number(req.body.page)  
+        const size =  Number(req.query.size) ||  Number(req.body.size) 
+        
+        
+        try{
+            let total = await News.countDocuments({})
+            let allNews = await News.find({}) 
+
+            if (!(page&&size))   { 
+                return res.json({
+                    success: true,
+                    total,
+                    allNews
                 })
             }
+            let news = await News.find({})
+                    .skip((page-1)*size)
+                    .limit(size)
+                
             
-            res.json( {
+            res.json({
                 success: true,
-                 news
+                total,
+                page,
+                size,
+                news
             })
             
-        });
-    })
+      
+        }catch(err){
+            res.json({
+                success: false,
+                message: err
+            })
+        } 
+    });   
     
 
 
     router.post('/', async function(req, res) {
         let createNews = req.body.news
+        createNews.created_at = Date.now()
         News.create({...createNews} ,function(err,news){
-           
+        
             if (err){
                 res.json({
                     success: false,
@@ -45,10 +67,10 @@ const News = models('News');
     })
 
     router.delete('/:id', async function(req, res) {
-        let = req.params.id
+        let deleteId = req.params.id
         try{
-            let category = await News.findOneAndRemove({_id:deleteId})
-            if(!category) throw "news is not exist!!"
+            let news = await News.findOneAndRemove({_id:deleteId})
+            if(!news) throw "news is not exist!!"
             
             res.json({
                 success: true,
