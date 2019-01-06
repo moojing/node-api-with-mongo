@@ -74,7 +74,7 @@ const News = models('News');
             
             res.json({
                 success: true,
-                data: category
+                data: news
             })
             
         }catch(err){
