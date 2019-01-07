@@ -7,6 +7,7 @@ const DescriptionSchema = new Schema( {
    
     
         'zh-cn':{
+            name:String,
             description:{
                 tilte: String,
                 text:String,
@@ -26,6 +27,7 @@ const DescriptionSchema = new Schema( {
             
         },
         'en-us':{
+            name:String,
             description:{
                 tilte: String,
                 text:String,  
@@ -45,6 +47,7 @@ const DescriptionSchema = new Schema( {
             
         },
         'ja-jp':{
+            name:String,
             description:{
                 tilte: String,
                 text:String,
@@ -64,6 +67,7 @@ const DescriptionSchema = new Schema( {
             
         },
         'it-ch':{
+            name:String,
             description:{
                 tilte: String,
                 text:String,
@@ -83,6 +87,7 @@ const DescriptionSchema = new Schema( {
             
         },
         'es-es':{
+            name:String,
             description:{
                 tilte: String,
                 text:String,

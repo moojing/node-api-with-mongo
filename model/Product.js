@@ -5,7 +5,6 @@ const ObjectID =  require('mongodb').ObjectID
 
 const ProductSchema = new Schema({ 
         created_at: Date,
-        title: String,
         sku:String,
         "i18n":{
           type:Number, 

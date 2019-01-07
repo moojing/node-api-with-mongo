@@ -17,7 +17,9 @@ const ProductCategory = models('ProductCategory');
     
         try{
             let total = await Product.countDocuments({category })
-            let allProducts = await Product.find({category}).populate('category') 
+            let allProducts = await Product.find({category})
+                .populate('i18n')
+                .populate('category') 
             
             if (!(page&&size))   { 
                 return res.json({
@@ -28,6 +30,7 @@ const ProductCategory = models('ProductCategory');
             }
             let products = await Product.find({category})
                     .populate('category')
+                    .populate('i18n')
                     .skip((page-1)*size)
                     .limit(size)
                 
