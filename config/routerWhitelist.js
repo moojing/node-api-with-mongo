@@ -3,7 +3,9 @@ module.exports =  {
       '/homepage',
       '/products',
       '/categories',
-      '/news'
+      '/news',
+      '/ridingNews',
+      '/team'
     ],
     post: [
       '/login'
