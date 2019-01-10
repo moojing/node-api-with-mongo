@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-const models = require('../../../model');
+const models = require('../../model');
 const Banner = models('Banner');
 
 router.get('/', async function(req, res) {

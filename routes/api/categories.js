@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-const models = require('../../../model');
+const models = require('../../model');
 const Category = models('ProductCategory');
 const Product = models('Product');
 

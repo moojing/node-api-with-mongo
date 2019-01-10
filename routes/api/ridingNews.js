@@ -1,37 +1,38 @@
 var express = require('express');
 var router = express.Router();
-const models = require('../../../model');
-const TeamModel = models('Team');
+const models = require('../../model');
+const RidingNewsModel = models('RidingNews');
 
 
     router.get('/', async function(req, res) {
-        // TeamModel.remove({},()=>{})
+        // RidingNewsModel.remove({},()=>{})
         const page = Number(req.query.page) ||  Number(req.body.page)  
         const size =  Number(req.query.size) ||  Number(req.body.size) 
-        
-        
+       
         try{
-            let total = await TeamModel.countDocuments({})
-            let allTeam = await TeamModel.find({}) 
-
+           
+            let total = await RidingNewsModel.countDocuments({})
+             
+            let allRidingNews = await RidingNewsModel.find({}) 
+            
             if (!(page&&size))   { 
                 return res.json({
                     success: true,
                     total,
-                    allTeam
+                    allRidingNews
                 })
             }
-            let team = await TeamModel.find({})
+            let ridingNews = await RidingNewsModel.find({})
                     .skip((page-1)*size)
                     .limit(size)
                 
-            
+              
             res.json({
                 success: true,
                 total,
                 page,
                 size,
-                team
+                ridingNews
             })
             
       
@@ -46,9 +47,9 @@ const TeamModel = models('Team');
 
 
     router.post('/', async function(req, res) {
-        let createTeam = req.body.team
-        createTeam.created_at = Date.now()
-        TeamModel.create({...createTeam} ,function(err,TeamModel){
+        let createRidingNews = req.body.ridingNews
+        createRidingNews.created_at = Date.now()
+        RidingNewsModel.create({...createRidingNews} ,function(err,RidingNewsModel){
         
             if (err){
                 res.json({
@@ -58,7 +59,7 @@ const TeamModel = models('Team');
             }
             res.json({
                 success: true,
-                TeamModel
+                RidingNewsModel
             })
             
         })
@@ -69,12 +70,12 @@ const TeamModel = models('Team');
     router.delete('/:id', async function(req, res) {
         let deleteId = req.params.id
         try{
-            let TeamModel = await TeamModel.findOneAndRemove({_id:deleteId})
-            if(!TeamModel) throw "TeamModel is not exist!!"
+            let RidingNewsModel = await RidingNewsModel.findOneAndRemove({_id:deleteId})
+            if(!RidingNewsModel) throw "RidingNewsModel is not exist!!"
             
             res.json({
                 success: true,
-                data: TeamModel
+                data: RidingNewsModel
             })
             
         }catch(err){

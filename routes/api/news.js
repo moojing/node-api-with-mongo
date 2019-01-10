@@ -1,38 +1,37 @@
 var express = require('express');
 var router = express.Router();
-const models = require('../../../model');
-const RidingNewsModel = models('RidingNews');
+const models = require('../../model');
+const News = models('News');
 
 
     router.get('/', async function(req, res) {
-        // RidingNewsModel.remove({},()=>{})
+        // News.remove({},()=>{})
         const page = Number(req.query.page) ||  Number(req.body.page)  
         const size =  Number(req.query.size) ||  Number(req.body.size) 
-       
+        
+        
         try{
-           
-            let total = await RidingNewsModel.countDocuments({})
-             
-            let allRidingNews = await RidingNewsModel.find({}) 
-            
+            let total = await News.countDocuments({})
+            let allNews = await News.find({}) 
+
             if (!(page&&size))   { 
                 return res.json({
                     success: true,
                     total,
-                    allRidingNews
+                    allNews
                 })
             }
-            let ridingNews = await RidingNewsModel.find({})
+            let news = await News.find({})
                     .skip((page-1)*size)
                     .limit(size)
                 
-              
+            
             res.json({
                 success: true,
                 total,
                 page,
                 size,
-                ridingNews
+                news
             })
             
       
@@ -47,9 +46,9 @@ const RidingNewsModel = models('RidingNews');
 
 
     router.post('/', async function(req, res) {
-        let createRidingNews = req.body.ridingNews
-        createRidingNews.created_at = Date.now()
-        RidingNewsModel.create({...createRidingNews} ,function(err,RidingNewsModel){
+        let createNews = req.body.news
+        createNews.created_at = Date.now()
+        News.create({...createNews} ,function(err,news){
         
             if (err){
                 res.json({
@@ -59,7 +58,7 @@ const RidingNewsModel = models('RidingNews');
             }
             res.json({
                 success: true,
-                RidingNewsModel
+                news
             })
             
         })
@@ -70,12 +69,12 @@ const RidingNewsModel = models('RidingNews');
     router.delete('/:id', async function(req, res) {
         let deleteId = req.params.id
         try{
-            let RidingNewsModel = await RidingNewsModel.findOneAndRemove({_id:deleteId})
-            if(!RidingNewsModel) throw "RidingNewsModel is not exist!!"
+            let news = await News.findOneAndRemove({_id:deleteId})
+            if(!news) throw "news is not exist!!"
             
             res.json({
                 success: true,
-                data: RidingNewsModel
+                data: news
             })
             
         }catch(err){

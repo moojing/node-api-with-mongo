@@ -3,8 +3,8 @@ var router = express.Router();
 var multipart = require('connect-multiparty');
 var multipartMiddleware = multipart();
 var path = require('path');
-const models = require('../../../model');
-const cloudinary = require('../../../utils/cloudinary')
+const models = require('../../model');
+const cloudinary = require('../../utils/cloudinary')
 
 
 router.post('/',multipartMiddleware,async function(req, res) {

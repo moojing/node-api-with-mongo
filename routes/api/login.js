@@ -4,8 +4,8 @@ const express = require('express')
 const router = express.Router()
 const path = require('path')
 
-const config = require('../../../config')
-const models = require('../../../model')
+const config = require('../../config')
+const models = require('../../model')
 const User = models('User')
  
  

@@ -39,12 +39,12 @@ router.use(function (req, res, next) {
     }
 } )
 
-
-fs.readdir(__dirname+'/front', (err, files) => {
+fs.readdir(__dirname, (err, files) => {
   if(err) throw err
   files.forEach(file => {
+    if (file==='index') return 
     let routerName = file.split('.')[0]
-    router.use(`/${routerName}`, require(`./front/${routerName}`));    
+    router.use(`/${routerName}`, require(`./${routerName}`));    
   });
 })
  
