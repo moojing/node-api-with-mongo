@@ -70,12 +70,12 @@ const RidingNewsModel = models('RidingNews');
     router.delete('/:id', async function(req, res) {
         let deleteId = req.params.id
         try{
-            let RidingNewsModel = await RidingNewsModel.findOneAndRemove({_id:deleteId})
+            let ridingNews = await RidingNewsModel.findOneAndRemove({_id:deleteId})
             if(!RidingNewsModel) throw "RidingNewsModel is not exist!!"
             
             res.json({
                 success: true,
-                data: RidingNewsModel
+                data: ridingNews
             })
             
         }catch(err){

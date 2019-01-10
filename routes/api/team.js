@@ -69,12 +69,12 @@ const TeamModel = models('Team');
     router.delete('/:id', async function(req, res) {
         let deleteId = req.params.id
         try{
-            let TeamModel = await TeamModel.findOneAndRemove({_id:deleteId})
+            let team = await TeamModel.findOneAndRemove({_id:deleteId})
             if(!TeamModel) throw "TeamModel is not exist!!"
             
             res.json({
                 success: true,
-                data: TeamModel
+                data: team
             })
             
         }catch(err){
