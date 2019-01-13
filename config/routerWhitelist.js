@@ -5,7 +5,8 @@ module.exports =  {
       '/categories',
       '/news',
       '/ridingNews',
-      '/team'
+      '/team',
+      '/about'
     ],
     post: [
       '/login'

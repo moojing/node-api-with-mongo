@@ -21,8 +21,7 @@ const CompanyDefaultValue =  {
        "es-es":{
            title:'',
            description:''
-       },
-       _id:false
+       }
    }
 }
 

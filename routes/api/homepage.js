@@ -5,7 +5,7 @@ const Banner = models('Banner');
 
 router.get('/', async function(req, res) {
  
-  const lang = req.header('lang')?req.header('lang'):req.params.lang; 
+  const lang = req.header('lang')?req.header('lang'):req.query.lang; 
   // Banner.remove({},()=>{})
   Banner.getSingleton(async function (err, bannerItem) {
     if (err) return handleError(err);
