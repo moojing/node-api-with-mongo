@@ -14,7 +14,7 @@ const CompanySchema = new Schema( {
             title:String,
             description:String
         },
-        "it-ch":{
+        "it-it":{
             title:String,
             description:String
         },

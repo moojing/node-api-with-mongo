@@ -50,5 +50,6 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+console.log(process.env.NODE_PORT)
 app.listen(process.env.NODE_PORT || 80);
 module.exports = app;

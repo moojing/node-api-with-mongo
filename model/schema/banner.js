@@ -14,7 +14,7 @@ let defaultBannerSchema = {
                 title:String,
                 btnText:String
             },
-            "it-ch":{
+            "it-it":{
                 title:String,
                 btnText:String
             },
@@ -41,7 +41,7 @@ let defaultProductSchema = {
             title:String,
             description:String
         },
-        "it-ch":{
+        "it-it":{
             title:String,
             description:String
         },

@@ -15,7 +15,7 @@ let defaultBanner = {
                 title:"",
                 btnText:""
             },
-            "it-ch":{
+            "it-it":{
                 title:"",
                 btnText:""
             },
@@ -42,7 +42,7 @@ let defaultProduct = {
             title:"",
             description:""
         },
-        "it-ch":{
+        "it-it":{
             title:"",
             description:""
         },

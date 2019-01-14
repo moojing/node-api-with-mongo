@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "NODE_PORT=3001 nodemon ./bin/www"
+    "start": "export NODE_PORT=3001 && nodemon ./bin/www"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",

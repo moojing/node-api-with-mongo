@@ -10,7 +10,7 @@ const CompanyDefaultValue =  {
            title:'',
            description:''
        },
-       "it-ch":{
+       "it-it":{
            title:'',
            description:''
        },

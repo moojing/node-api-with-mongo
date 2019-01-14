@@ -20,7 +20,7 @@ const CategorySchema = new Schema( {
             type:String,
             required:true
         }, 
-        'it-ch':{
+        'it-it':{
             type:String,
             required:true
         }, 

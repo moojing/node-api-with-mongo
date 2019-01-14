@@ -66,7 +66,7 @@ const DescriptionSchema = new Schema( {
             },
             
         },
-        'it-ch':{
+        'it-it':{
             name:String,
             description:{
                 tilte: String,
