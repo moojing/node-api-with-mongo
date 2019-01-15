@@ -46,7 +46,7 @@ const News = models('News');
 
     router.get('/:id', async function(req, res) {
         let newsId = req.params.id
-         
+         console.log('hi')
         let lang = req.query.lang ? req.query.lang : "zh-cn"
         
         try{
