@@ -42,8 +42,28 @@ const News = models('News');
             })
         } 
     });   
-    
 
+
+    router.get('/:id', async function(req, res) {
+        let newsId = req.params.id
+         
+        let lang = req.query.lang ? req.query.lang : "zh-cn"
+        
+        try{
+            let news = await News.findOne({_id:newsId})
+               
+            res.json({
+                success: true,
+                news 
+            })
+        }catch(err){
+            res.json({
+                success: false,
+                message: err
+            })
+        } 
+       
+    })
 
     router.post('/', async function(req, res) {
         let createNews = req.body.news

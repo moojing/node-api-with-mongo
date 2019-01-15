@@ -31,7 +31,7 @@ const Product = models('Product');
 
             const page = Number(req.query.page) ||  Number(req.body.page)  
             const size =  Number(req.query.size) ||  Number(req.body.size) 
-
+            const sku = req.query.sku 
            
         try{
             let total = await Product.countDocuments({category})
