@@ -1,0 +1,26 @@
+image: node:11.6.0 
+
+stages:
+  - build
+  - deploy
+
+build_job:
+  stage: build
+  script:
+    - npm i 
+    - pm2 kill
+    - pm2 start app.js
+  cache:
+    untracked: true
+  artifacts:
+    paths:
+      - ./
+ 
+
+deploy_job:
+  stage: deploy
+  script:
+    - echo Deploy OK
+  only:
+    - release
+  when: manual
